@@ -57,7 +57,7 @@
 	  <div class="row">            
       		<div class="span1"></div>
             <div class="span4 label-text"><h1>System</h1></div>
-      		<div class="span2 logo"><img src="images/logo.png"></div>
+      		<div class="span2 logo"><img src="{$_FILES_URL}images/logo.png"></div>
       		<div class="span4 label-text"><h1>Plus</h1></div> 
             <div class="span1"></div>                       
       </div> 
