@@ -19,14 +19,14 @@
 <body>
 	<div class="container">
       <div class="row flags">
-			<div class="span1"><a href="#"><img src="{$IMAGES_URL}images/flags/ru.png" class="active"></a></div>
-            <div class="span1"><a href="#"><img src="{$IMAGES_URL}images/flags/en.png"></a></div>
-            <div class="span1"><a href="#"><img src="{$IMAGES_URL}images/flags/fr.png"></a></div>
-            <div class="span1"><a href="#"><img src="{$IMAGES_URL}images/flags/es.png"></a></div>
-            <div class="span1"><a href="#"><img src="{$IMAGES_URL}images/flags/de.png"></a></div>
-            <div class="span1"><a href="#"><img src="{$IMAGES_URL}images/flags/fi.png"></a></div>
-            <div class="span1"><a href="#"><img src="{$IMAGES_URL}images/flags/sw.png"></a></div>
-            <div class="span1"><a href="#"><img src="{$IMAGES_URL}images/flags/nw.png"></a></div>
+			<div class="span1"><a href="#"><img src="{$IMAGES_URL}flags/ru.png" class="active"></a></div>
+            <div class="span1"><a href="#"><img src="{$IMAGES_URL}flags/en.png"></a></div>
+            <div class="span1"><a href="#"><img src="{$IMAGES_URL}flags/fr.png"></a></div>
+            <div class="span1"><a href="#"><img src="{$IMAGES_URL}flags/es.png"></a></div>
+            <div class="span1"><a href="#"><img src="{$IMAGES_URL}flags/de.png"></a></div>
+            <div class="span1"><a href="#"><img src="{$IMAGES_URL}flags/fi.png"></a></div>
+            <div class="span1"><a href="#"><img src="{$IMAGES_URL}flags/sw.png"></a></div>
+            <div class="span1"><a href="#"><img src="{$IMAGES_URL}flags/nw.png"></a></div>
             <div class="span4 contact-link"><a class="btn btn-inverse contact-link" data-toggle="modal" href="#myModalContact">Обратная связь</a></div>
       </div>
       <div class="row">
@@ -57,7 +57,7 @@
 	  <div class="row">            
       		<div class="span1"></div>
             <div class="span4 label-text"><h1>System</h1></div>
-      		<div class="span2 logo"><img src="images/logo.png"></div>
+      		<div class="span2 logo"><img src="{$IMAGES_URL}logo.png"></div>
       		<div class="span4 label-text"><h1>Plus</h1></div> 
             <div class="span1"></div>                       
       </div> 
