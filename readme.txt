@@ -9,3 +9,5 @@ git clone https://github.com/cyxapuk/splus-int.com.git
 3) Из фронтэнда скопировать папку _config на уровень выше
 
 4) Из фронтэнда скопировать файл .htaccess на уроверь выше
+
+Все!
