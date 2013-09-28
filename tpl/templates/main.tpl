@@ -19,14 +19,14 @@
 <body>
 	<div class="container">
       <div class="row flags">
-			<div class="span1"><a href="#"><img src="{$IMAGES_URL}flags/ru.png" class="active"></a></div>
-            <div class="span1"><a href="#"><img src="{$IMAGES_URL}flags/en.png"></a></div>
-            <div class="span1"><a href="#"><img src="{$IMAGES_URL}flags/fr.png"></a></div>
-            <div class="span1"><a href="#"><img src="{$IMAGES_URL}flags/es.png"></a></div>
-            <div class="span1"><a href="#"><img src="{$IMAGES_URL}flags/de.png"></a></div>
-            <div class="span1"><a href="#"><img src="{$IMAGES_URL}flags/fi.png"></a></div>
-            <div class="span1"><a href="#"><img src="{$IMAGES_URL}flags/sw.png"></a></div>
-            <div class="span1"><a href="#"><img src="{$IMAGES_URL}flags/nw.png"></a></div>
+			<div class="span1"><a href="#"><img src="{$_FILES_URL}images/flags/ru.png" class="active"></a></div>
+            <div class="span1"><a href="#"><img src="{$_FILES_URL}images/flags/en.png"></a></div>
+            <div class="span1"><a href="#"><img src="{$_FILES_URL}images/flags/fr.png"></a></div>
+            <div class="span1"><a href="#"><img src="{$_FILES_URL}images/flags/es.png"></a></div>
+            <div class="span1"><a href="#"><img src="{$_FILES_URL}images/flags/de.png"></a></div>
+            <div class="span1"><a href="#"><img src="{$_FILES_URL}images/flags/fi.png"></a></div>
+            <div class="span1"><a href="#"><img src="{$_FILES_URL}images/flags/sw.png"></a></div>
+            <div class="span1"><a href="#"><img src="{$_FILES_URL}images/flags/nw.png"></a></div>
             <div class="span4 contact-link"><a class="btn btn-inverse contact-link" data-toggle="modal" href="#myModalContact">Обратная связь</a></div>
       </div>
       <div class="row">
@@ -57,7 +57,7 @@
 	  <div class="row">            
       		<div class="span1"></div>
             <div class="span4 label-text"><h1>System</h1></div>
-      		<div class="span2 logo"><img src="{$IMAGES_URL}logo.png"></div>
+      		<div class="span2 logo"><img src="images/logo.png"></div>
       		<div class="span4 label-text"><h1>Plus</h1></div> 
             <div class="span1"></div>                       
       </div> 
@@ -102,7 +102,7 @@
     <h3 id="myModalLabel">Елена Батурина подала в суд на Минфин</h3>
   </div>
   <div class="modal-body">
-    <p><img src="images/baturina.jpg" /></p>
+    <p><img src="{$_FILES_URL}images/baturina.jpg" /></p>
     <p>Арбитражный суд Москвы зарегистрировал иск ЗАО ТД «Сетуньская», компании Елены Батуриной, к министерству финансов России о взыскании 34 миллиардов рублей, сообщает РИА Новости. Иск поступил в суд 23 сентября, но к производству пока не принят.</p>
     <p>Батурина несколько лет судится с органами государственной власти из-за принадлежности земельных участков на пересечении Минской и Староволынской улиц. Компания «Сетуньская» заявляет, что 16 гектаров на этой территории принадлежит ей, что и было оформлено в 2003 году после приобретения на вторичном рынке у АОЗТ «Матвеевское».</p>
     <p>На территории планировалось построить многофункциональный комплекс в рамках проекта, который первоначально назывался «Сетунь-хиллс». Между тем, государство заявляет, что имеет полное право на эти участки, поскольку земля была зарезервирована под размещение иностранных посольств президентским указом 1993 года.</p>
