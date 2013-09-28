@@ -1,0 +1,274 @@
+<?php
+
+/**
+ * Класс контроллера
+ * @package Kokon.ru
+**/
+
+class FrontendController extends Controller
+{
+
+    protected $model = false;
+    protected $view = false;    
+    protected $template = false;
+    protected $session = false;
+    protected $user = false;
+    protected $site = false;
+    protected $page = false;    
+    protected $page_id = 0;
+    protected $page_alias = '';
+    protected static $modules = array();
+    
+
+    public function __construct()
+	{
+        
+        Fabrika::addTools('session', array(), 'Session');
+        $this->session = Fabrika::getTools('session');        
+
+        Fabrika::addTools('user', array(), 'User');
+        $this->user = Fabrika::getTools('user');        
+        
+        Fabrika::addTools('model', array(), 'FrontendModel');
+        $this->model = Fabrika::getTools('model');
+        
+        Fabrika::addTools('view', array(), 'FrontendView');
+        $this->view = Fabrika::getTools('view');
+        
+        $this->user->SetSessionId($this->session->GetSessionId());
+        $this->user->Init();
+        
+        $this->lang_id = $this->clearDigit( $this->gvar('lang_id',0) );
+        $this->page_id = $this->clearDigit( $this->gvar('page_id',0) );
+        $this->page_alias = $this->clearStr( $this->gvar('page_alias','') );
+        
+        $this->site = $this->prepareSite($this->model->getSite());
+        
+    }
+    
+    protected function prepareSite($site = object)
+    {
+        if(empty($site))    return false;
+        
+        if(!empty($site['NameML']))
+        {
+            $site['Title'] = $this->get1dFrom2d(unserialize($site['NameML']));
+        }
+        
+        if(!empty($this->lang_id))
+        {
+            $site['LangId'] = $this->lang_id;
+        }
+        
+        return $site;
+    }
+    
+    protected function getPage()
+    {   
+        if(empty($this->page_id) && empty($this->page_alias))
+        {
+            return $this->model->getPage($this->site['PageId']);
+        }
+        
+        if(!empty($this->page_id))
+        {
+            return $this->model->getPage($this->page_id);
+        }
+        
+        if(!empty($this->page_alias))
+        {
+            return $this->model->getPageByAlias($this->page_alias);
+        }
+        
+        return false;        
+        
+    }
+    
+    protected function preparePage($page = object)
+    {
+        if(empty($page))    return false;
+        
+        if(!empty($page['TemplateId']))
+        {
+            $page['Template'] = $this->model->getTemplate($page['TemplateId']);
+            $page['Target'] = $page['Template']['Path'];
+        }
+        else
+        {
+            $page['Target'] = "";
+        }
+        
+        if(!empty($page['NameML']))
+        {
+            $page['Title'] = $this->get1dFrom2d(unserialize($page['NameML']));
+        }
+        
+        return $page;
+        
+    }
+    
+    protected function preparePageContent($page_id = 0)
+    {
+        if(empty($page_id)) return false;
+        
+        $pageContent = $this->model->getPageContent($page_id);
+        
+        return unserialize($pageContent['Content']);
+        
+    }
+    
+    public function displayPage($target = "")
+    {
+        $page = $this->preparePage($this->getPage());
+        
+        if(!empty($page))
+        {
+            $this->page_id = $page['Id'];
+            $pagecontent = $this->preparePageContent($this->page_id);
+        }
+        
+        $pagelist = $this->getListReplaceIndex($this->model->GetPageList(),'Id');
+        
+        if(!empty($pagelist))
+        {
+            foreach($pagelist as $_pagelist_key => $_pagelist_value)
+            {
+                $pagelist[$_pagelist_key]['Title'] = $this->get1dFrom2d(unserialize($_pagelist_value['NameML']));
+            }
+        }
+        
+        $array = array
+        (
+            'page' => $page, 
+            'pagelist' => $pagelist,
+            'pagecontent' => $pagecontent,
+            'headmenulist' => $this->model->getMenuPageList(2), 
+            'target' => $page['Target'],
+        );
+        
+        switch($page['Target'])
+        {
+            case 'announcements-list.tpl':
+                $catalog = $this->initModule('catalog');
+                $catalog->setCatalogId(15);
+                $catalog->setCategoryId(67);
+                $object = $catalog->getObject();
+                $array['object'] = $object;
+                $array['catalog_id'] = $catalog->setCatalogId();
+                $array['category_id'] = $catalog->setCategoryId();
+                $array['object_id'] = $catalog->setObjectId($object['object_id']);
+                $array['object_next'] = $catalog->getObjectNext($object['object_sort']);
+                $array['object_prev'] = $catalog->getObjectPrev($object['object_sort']);               
+            break;
+                
+            case 'event-list.tpl':
+                $catalog = $this->initModule('catalog');
+                $catalog->setCatalogId(15);
+                $catalog->setCategoryId(69);  
+                $objectlist = $catalog->getObjectList();
+                $array['objectlist'] = $objectlist;
+                $array['catalog_id'] = $catalog->setCatalogId();
+                $array['category_id'] = $catalog->setCategoryId();
+                $array['object_id'] = $catalog->setObjectId($object['object_id']); 
+            break;
+            
+            case 'event-item.tpl':
+                $catalog = $this->initModule('catalog');
+                $object = $catalog->getObject();
+                $array['object'] = $object;
+                $array['catalog_id'] = $catalog->setCatalogId();
+                $array['category_id'] = $catalog->setCategoryId();
+                $array['object_id'] = $catalog->setObjectId();
+            break;
+            
+            case 'schedule-list.tpl':
+                $catalog = $this->initModule('catalog');
+                $catalog->setCatalogId(15);
+                $catalog->setCategoryId(70);  
+                $objectlist = $catalog->getObjectList();
+                $array['objectlist'] = $objectlist;
+                $array['catalog_id'] = $catalog->setCatalogId();
+                $array['category_id'] = $catalog->setCategoryId();
+                $array['object_id'] = $catalog->setObjectId($object['object_id']);    
+            break;
+            
+            case 'schedule-item.tpl':
+                $catalog = $this->initModule('catalog');
+                $object = $catalog->getObject();
+                $array['object'] = $object;
+                $array['catalog_id'] = $catalog->setCatalogId();
+                $array['category_id'] = $catalog->setCategoryId();
+                $array['object_id'] = $catalog->setObjectId();
+            break;   
+            
+            case 'gallery-list.tpl':
+                $catalog = $this->initModule('catalog');
+                $catalog->setCatalogId(15);
+                $catalog->setCategoryId(71);
+                $array['categorylist'] = $catalog->getCategoryList();
+            break;   
+            
+            case 'gallery-item-list.tpl':
+                $catalog = $this->initModule('catalog');
+                $array['catalog_id'] = $catalog->setCatalogId();
+                $array['category_id'] = $catalog->setCategoryId(); 
+                $array['category'] = $catalog->getCategory();
+                $array['objectlist'] = $catalog->getObjectList();
+            break;
+            
+        }
+        
+        $this->displayThread($array);        
+    }
+        
+
+    
+    private function initModule($name = "")
+    {
+        if(empty($name))    return false;
+        
+        switch($name)
+        {
+            case 'catalog':
+                Fabrika::addTools('catalog', array(), 'FrontendCatalogController');
+                return self::$modules[$name] = Fabrika::getTools('catalog');
+            break;            
+        }
+    }   
+    
+    protected function displayThread($array = array())
+    {        
+        $array['auth_user'] = $this->model->GetUserById($this->user->GetUserId());
+        $array['auth_user_login'] = $this->user->GetUserLogin();
+        $array['site'] = $this->site;
+        $array['lang_id'] = $this->lang_id;
+        $array['page_id'] = $this->page_id;
+        $array['page_alias'] = $this->page_alias;
+        
+        $this->view->displayIndex($array);        
+    }
+    
+    public function ajaxSave()
+    {
+        if($this->user->GetUserId())
+        {
+            $page_id = $this->clearDigit( $this->gvar('page_id',0) );
+            $left = $this->gvar('left',0);
+            $right = $this->gvar('right',0);
+            
+            $content = array('left'=> $left, 'right' => $right);
+            
+            $array = array(
+                'PageId' => $page_id,
+                'Content' => serialize($content)
+            );
+            
+            $this->model->Delete(MYSQL_PROJECT . ".system_page_content"," where PageId = '" . $page_id . "'");
+            $content_id = $this->model->Insert($array,MYSQL_PROJECT . ".system_page_content");            
+        }
+        
+    }
+    
+}
+
+?>

@@ -1,0 +1,176 @@
+<?php
+
+/**
+ * Класс контроллера модуля "Каталог"
+ * @package Kokon.ru
+**/
+
+class FrontendCatalogController extends FrontendController
+{
+    var $catalog_id = 0;
+    var $category_id = 0;
+    var $object_id = 0;
+    var $model = false;
+    var $view = false;
+    
+    public function __construct()
+    {
+        $this->catalog_id    = $this->clearDigit( $this->gvar('catalog_id') );
+        $this->category_id    = $this->clearDigit( $this->gvar('category_id') );
+        $this->object_id    = $this->clearDigit( $this->gvar('object_id') );
+        
+        Fabrika::addTools('FrontendCatalogModel', array(), 'FrontendCatalogModel');
+        $this->model = Fabrika::getTools('FrontendCatalogModel');
+        
+        Fabrika::addTools('FrontendCatalogView', array(), 'FrontendCatalogView');
+        $this->view = Fabrika::getTools('FrontendCatalogView');        
+    }    
+       
+       
+    public function setCatalogId($catalog_id = 0)
+    {
+        if(empty($catalog_id))  return $this->catalog_id;
+        
+        if(empty($this->catalog_id))
+        {
+            $this->catalog_id = $catalog_id;
+        }
+        
+        return $this->catalog_id;
+        
+    }
+    
+    public function setCategoryId($category_id = 0)
+    {
+        if(empty($category_id))  return $this->category_id;
+        
+        if(empty($this->category_id))
+        {
+            $this->category_id = $category_id;
+        }
+        
+        return $this->category_id;
+        
+    }
+    
+    public function setObjectId($object_id = 0)
+    {
+        if(empty($object_id))  return $this->object_id;
+        
+        if(empty($this->object_id))
+        {
+            $this->object_id = $object_id;
+        }
+        
+        return $this->object_id;
+        
+    }
+    
+    public function getCategoryList()
+    {
+        $categorylist = $this->model->getCategoryList($this->catalog_id, $this->category_id);
+        
+        if(empty($categorylist))  return false;
+        
+        $categorylist = $this->getListReplaceIndex($categorylist,'category_id');
+        
+        foreach($categorylist as $key => $category)
+        {
+            $categorylist[$key]['category'] = unserialize($category['category']);  
+            
+            if(!empty($categorylist[$key]['category']))
+            {
+                $categorylist[$key]['category'] = $this->getListReplaceIndex($categorylist[$key]['category'],'propertie_system_title');
+            }
+                   
+        }
+        
+        return $categorylist;
+        
+    }
+    
+    public function getCategory($category_id = 0)
+    {
+        $category = $this->model->getCategory($this->catalog_id, ($category_id)?$category_id:$this->category_id);
+        
+        if(empty($category))  return false;
+        
+        $category['category'] = unserialize($category['category']);
+        
+        if(!empty($category['category']))
+        {
+            $category['category'] = $this->getListReplaceIndex($category['category'],'propertie_system_title');
+        }
+        
+        return $category;
+        
+    }        
+    
+    public function getObjectList()
+    {
+        $objectlist = $this->model->getObjectList($this->catalog_id, $this->category_id);
+        
+        if(empty($objectlist))  return false;
+        
+        $objectlist = $this->getListReplaceIndex($objectlist,'object_id');
+        
+        foreach($objectlist as $key => $object)
+        {
+            $objectlist[$key]['object'] = unserialize($object['object']); 
+            
+            if(!empty($objectlist[$key]['object']))
+            {
+                $objectlist[$key]['object'] = $this->getListReplaceIndex($objectlist[$key]['object'],'propertie_system_title');
+            }        
+        }
+        
+        return $objectlist;
+        
+    }
+    
+    
+    public function getObject($object_id = 0)
+    {
+        $object = $this->model->getObject($this->catalog_id, $this->category_id, ($object_id)?$object_id:$this->object_id);
+        
+        if(empty($object))  return false;
+        
+        $object['object'] = unserialize($object['object']);
+        
+        if(!empty($object['object']))
+        {
+            foreach($object['object'] as $k=>$array)
+            {
+                if(is_array($array))
+                {
+                    foreach($array as $_k=>$_v)
+                    {
+                        $object['object'][$k][$_k] = htmlspecialchars_decode($_v);
+                    }
+                }
+            }
+            
+            $object['object'] = $this->getListReplaceIndex($object['object'],'propertie_system_title');
+            
+        }
+        
+        return $object;
+        
+    }
+    
+    public function getObjectPrev($object_sort = "")
+    {
+        if(empty($object_sort)) return false;
+        
+        return $this->model->getObjectPrev($this->catalog_id, $this->category_id, $object_sort);
+    }
+    
+    public function getObjectNext($object_sort = "")
+    {
+        if(empty($object_sort)) return false;
+        
+        return $this->model->getObjectNext($this->catalog_id, $this->category_id, $object_sort);
+    }    
+                   
+        
+}

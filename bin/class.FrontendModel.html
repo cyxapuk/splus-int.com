@@ -1,0 +1,67 @@
+<?php
+
+/**
+ * Класс модели
+ * @package Kokon.ru
+**/
+
+class FrontendModel extends Model
+{
+    public function __construct()
+    {
+        parent::__construct();
+    }
+    
+    public function getSite()
+    {
+        $sql = "SELECT * FROM " . MYSQL_PROJECT . ".system_site";
+        return $this->dbconn->GetOne($sql);
+    }    
+    
+    public function getPage($Id = 0)
+    {
+        if(empty($Id))  return false;
+        
+        $sql = "SELECT * FROM " . MYSQL_PROJECT . ".system_page WHERE Id = '" . $Id . "'";
+        return $this->dbconn->GetOne($sql);
+    }
+    
+    public function getPageContent($PageId = 0)
+    {
+        if(empty($PageId))  return false;
+        
+        $sql = "SELECT * FROM " . MYSQL_PROJECT . ".system_page_content WHERE PageId = '" . $PageId . "'";
+        return $this->dbconn->GetOne($sql);
+    }    
+    
+    public function getPageByAlias($Alias = 0)
+    {
+        if(empty($Alias))  return false;
+        
+        $sql = "SELECT * FROM " . MYSQL_PROJECT . ".system_page WHERE Alias = '" . $Alias . "'";
+        return $this->dbconn->GetOne($sql);
+    }    
+    
+    public function GetPageList()
+    {
+        $sql = "SELECT * FROM " . MYSQL_PROJECT . ".system_page ORDER by Sort";
+        return $this->dbconn->GetAll($sql);        
+    }
+    
+    public function getMenuPageList($MenuId = 0)
+    {
+        if(empty($MenuId))  return false;
+        
+        $sql = "SELECT * FROM " . MYSQL_PROJECT . ".system_menu_page WHERE MenuId = '" . $MenuId . "' ORDER BY Sort";
+        return $this->dbconn->GetAll($sql);
+    }            
+    
+    public function getTemplate($Id = 0)
+    {
+        if(empty($Id))  return false;
+        
+        $sql = "SELECT * FROM " . MYSQL_PROJECT . ".system_template WHERE Id = '" . $Id . "'";
+        return $this->dbconn->GetOne($sql);
+    }        
+    
+}

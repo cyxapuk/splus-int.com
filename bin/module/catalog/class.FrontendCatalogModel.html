@@ -1,0 +1,92 @@
+<?php
+
+/**
+ * Класс модели модуля "Каталог"
+ * @package Kokon.ru
+**/
+
+class FrontendCatalogModel extends FrontendModel
+{
+    public function __construct()
+    {
+        parent::__construct();
+    }
+    
+    public function getCategory($catalog_id = 0, $category_id = 0)
+    {
+        if(empty($catalog_id) || empty($category_id))   return false;
+        
+        $sql = "SELECT * FROM " . MYSQL_PROJECT . ".module_catalog_category_index WHERE catalog_id = '" . $catalog_id . "' AND category_id = '" . $category_id . "'";            
+
+        return $this->dbconn->GetOne($sql);         
+        
+    }    
+    
+    public function getCategoryList($catalog_id = 0, $category_id = 0)
+    {
+        if(empty($catalog_id))   return false;
+        
+        if(!empty($category_id))
+        {
+            $sql = "SELECT * FROM " . MYSQL_PROJECT . ".module_catalog_category_index WHERE catalog_id = '" . $catalog_id . "' AND category_parent_id = '" . $category_id . "' ORDER by category_sort ASC";   
+        }
+        else
+        {
+            $sql = "SELECT * FROM " . MYSQL_PROJECT . ".module_catalog_category_index WHERE catalog_id = '" . $catalog_id . "' ORDER by category_sort ASC";    
+        }        
+        
+        return $this->dbconn->GetAll($sql);         
+        
+    }    
+    
+    public function getObjectList($catalog_id = 0, $category_id = 0)
+    {
+        if(empty($catalog_id) || empty($category_id))   return false;
+        
+        $sql = "SELECT * FROM " . MYSQL_PROJECT . ".module_catalog_object_index WHERE catalog_id = '" . $catalog_id . "' AND category_id = '" . $category_id . "' ORDER by object_sort ASC";
+        return $this->dbconn->GetAll($sql);         
+        
+    }
+    
+    public function getObject($catalog_id = 0, $category_id = 0, $object_id = 0)
+    {
+        if(empty($catalog_id) || empty($category_id))   return false;
+        
+        if(!empty($object_id))
+        {
+            $sql = "SELECT * FROM " . MYSQL_PROJECT . ".module_catalog_object_index WHERE catalog_id = '" . $catalog_id . "' AND category_id = '" . $category_id . "' AND object_id = '" . $object_id . "' ORDER by object_sort ASC";
+        }
+        else
+        {
+            $sql = "SELECT * FROM " . MYSQL_PROJECT . ".module_catalog_object_index WHERE catalog_id = '" . $catalog_id . "' AND category_id = '" . $category_id . "' ORDER by object_sort ASC";            
+        }
+
+        return $this->dbconn->GetOne($sql);         
+        
+    }
+    
+    public function getObjectPrev($catalog_id = 0, $category_id = 0, $object_sort = 0)
+    {
+        if(empty($catalog_id) || empty($category_id) || empty($object_sort))
+        {
+            return false;
+        }
+        
+        $sql = "SELECT object_id FROM " . MYSQL_PROJECT . ".module_catalog_object_index WHERE catalog_id = '" . $catalog_id . "' AND category_id = '" . $category_id . "' AND object_sort < '" . $object_sort . "' ORDER BY object_sort";
+
+        return $this->dbconn->GetField($sql,'object_id');
+    }  
+    
+    public function getObjectNext($catalog_id = 0, $category_id = 0, $object_sort = 0)
+    {
+        if(empty($catalog_id) || empty($category_id) || empty($object_sort))
+        {
+            return false;
+        }
+        
+        $sql = "SELECT object_id FROM " . MYSQL_PROJECT . ".module_catalog_object_index WHERE catalog_id = '" . $catalog_id . "' AND category_id = '" . $category_id . "' AND object_sort > '" . $object_sort . "' ORDER BY object_sort";
+
+        return $this->dbconn->GetField($sql,'object_id');
+    }      
+    
+}

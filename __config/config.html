@@ -1,0 +1,23 @@
+<?php
+
+/* Конфигурационный файл */
+define('PROJECT','kokonspace.ru');
+
+/* Подключаем фреймворк */
+include_once(dirname(dirname(__FILE__)) . '/__framework/bin/includer.html');
+
+/* константы относительно базы данных */
+define('MYSQL_HOST', 'localhost');
+define('MYSQL_DATABASE', 'cyxapuk09_repro');
+define('MYSQL_TABLE', 'system_users');
+define('MYSQL_USER', 'cyxapuk09_repro');
+define('MYSQL_PASSWORD', 'gtgtcLA3');
+define('MYSQL_PROJECT', 'cyxapuk09_repro');
+
+/* физические пути */
+define('PROJECT_PATH',dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . PROJECT . DIRECTORY_SEPARATOR);
+define('PROJECT_PATH_WWW',dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . PROJECT . DIRECTORY_SEPARATOR . 'www' . DIRECTORY_SEPARATOR);
+
+
+/* урлы */
+define('PROJECT_URL',"http://" . $_SERVER['HTTP_HOST']);

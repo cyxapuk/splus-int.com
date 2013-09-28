@@ -1,0 +1,32 @@
+RewriteEngine on^
+^
+RewriteCond %{HTTP_HOST} ^admin.yakushenkov.ru$^
+RewriteCond %{REQUEST_URI} !repro/www/^
+RewriteRule (.*) /repro/www/$1 [L]^
+^
+RewriteCond %{HTTP_HOST} ^yakushenkov.ru$ [NC,OR]^
+RewriteCond %{HTTP_HOST} ^www.yakushenkov.ru$^
+RewriteCond %{REQUEST_URI} !kokonspace.ru/www/^
+RewriteRule (.*) /kokonspace.ru/www/$1 [L]^
+^
+RewriteRule kokonspace.ru/www/main/$ /index.php?page_alias=welcome
+RewriteRule kokonspace.ru/www/main/([0-9]+)/$ /index.php?page_alias=welcome&catalog_id=$1 [L,QSA]
+RewriteRule kokonspace.ru/www/main/([0-9]+)/([0-9]+)/$ /index.php?page_alias=welcome&catalog_id=$1&category_id=$2 [L,QSA]
+RewriteRule kokonspace.ru/www/main/([0-9]+)/([0-9]+)/([0-9]+)/$ /index.php?page_alias=welcome&catalog_id=$1&category_id=$2&object_id=$3 [L,QSA]
+
+RewriteRule kokonspace.ru/www/events/$ /index.php?page_alias=events
+RewriteRule kokonspace.ru/www/events/([0-9]+)/$ /index.php?page_alias=events&catalog_id=$1 [L,QSA]
+RewriteRule kokonspace.ru/www/events/([0-9]+)/([0-9]+)/$ /index.php?page_alias=events&catalog_id=$1&category_id=$2 [L,QSA]
+RewriteRule kokonspace.ru/www/events/([0-9]+)/([0-9]+)/([0-9]+)/$ /index.php?page_alias=eventsObject&catalog_id=$1&category_id=$2&object_id=$3 [L,QSA]
+
+RewriteRule kokonspace.ru/www/shedule/$ /index.php?page_alias=shedule
+RewriteRule kokonspace.ru/www/shedule/([0-9]+)/$ /index.php?page_alias=shedule&catalog_id=$1 [L,QSA]
+RewriteRule kokonspace.ru/www/shedule/([0-9]+)/([0-9]+)/$ /index.php?page_alias=shedule&catalog_id=$1&category_id=$2 [L,QSA]
+RewriteRule kokonspace.ru/www/shedule/([0-9]+)/([0-9]+)/([0-9]+)/$ /index.php?page_alias=sheduleObject&catalog_id=$1&category_id=$2&object_id=$3 [L,QSA]
+
+RewriteRule kokonspace.ru/www/gallery/$ /index.php?page_alias=gallery
+RewriteRule kokonspace.ru/www/gallery/([0-9]+)/([0-9]+)/$ /index.php?page_alias=galleryObjectList&catalog_id=$1&category_id=$2 [L,QSA]
+
+Rewritecond %{REQUEST_FILENAME} !-d
+Rewritecond %{REQUEST_FILENAME} !-f
+RewriteRule kokonspace.ru/www/([^/.]*) /index.php?page_alias=$1 [NS,QSA]
