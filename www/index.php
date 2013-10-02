@@ -2,7 +2,7 @@
 
 include_once('../bin/starter.html');
 
-echo ">" . $_SERVER['REMORE_ADDR'];
+echo ">" . $_SERVER['REMOTE_ADDR'];
 exit;
 
 
