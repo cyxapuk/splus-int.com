@@ -131,7 +131,29 @@ class FrontendController extends Controller
             include_once(INCLUDE_PATH . '/Mail_Mime/mime.php');
             include_once(INCLUDE_PATH . '/Mail_Mime/mimePart.php');
             
-            echo "[$name] [$surName] [$email] [$message]" . "<br />";
+            $html = '<html><body>';
+            $html .= '<h3>Ваш поступило сообщение!</h3>';
+            $html .=  '<p>Имя: ' . $name . '</p>';
+            $html .=  '<p>Фамилия: ' . $surName . '</p>';
+            $html .=  '<p>Почта: ' . $email . '</p>';
+            $html .=  '<p>Сообщение: ' . $message . '</p>';
+            $html .= '</body></html>'; 
+            $crlf = "\n"; 
+            $hdrs = array( 
+                          'From'    => $email, 
+                          'Subject' => 'Обратная связь с сайта ' . $this->site['Name']  
+                          ); 
+            
+            $mime = new Mail_mime($crlf); 
+            
+            $mime->setHTMLBody($html); 
+            
+            //do not ever try to call these lines in reverse order 
+            $body = $mime->get(); 
+            $hdrs = $mime->headers($hdrs); 
+            
+            $mail =& Mail::factory('mail','-f ' . $this->site['Email']);   // add the fifth parameter for the PHP mail() function 
+            $mail->send('postmaster@localhost', $hdrs, $body);             
             
         }
     }
@@ -160,12 +182,11 @@ class FrontendController extends Controller
         
         $array = array
         (
-            'site' => $this->model->getSite(),
+            'site' => $this->site,
             'page' => $page, 
             'pagelist' => $pagelist,
             'pagecontent' => $pagecontent,
             'languages' => $this->model->GetLanguageList(),            
-            'headmenulist' => $this->model->getMenuPageList(2), 
             'target' => $page['Target'],
         );
         
