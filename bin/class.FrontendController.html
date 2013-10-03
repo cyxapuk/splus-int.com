@@ -73,7 +73,10 @@ class FrontendController extends Controller
         
         if(!empty($this->lang))
         {
-            $site['LangId'] = $this->getLanguageAbr($this->lang);
+            if($LangId = $this->getLanguageAbr($this->lang))
+            {
+                $site['LangId'] = $LangId;
+            }
         }
         
         if(!empty($this->lang_id))
