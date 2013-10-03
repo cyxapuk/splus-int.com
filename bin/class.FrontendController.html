@@ -123,14 +123,12 @@ class FrontendController extends Controller
         
         if(!empty($send))
         {
+            include_once(INCLUDE_PATH . '/PHPMailer/PHPMailerAutoload.php');            
+            
             $name = $this->clearStr( $this->gvar('name','') );
             $surName = $this->clearStr( $this->gvar('surName','') );
             $email = $this->clearStr( $this->gvar('email','') );
             $message = $this->clearStr( $this->gvar('message','') );
-            
-            include_once(INCLUDE_PATH . '/Mail/Mail.php');
-            include_once(INCLUDE_PATH . '/Mail_Mime/mime.php');
-            include_once(INCLUDE_PATH . '/Mail_Mime/mimePart.php');
             
             $html = '<html><body>';
             $html .= '<h3>Ваш поступило сообщение!</h3>';
@@ -138,23 +136,14 @@ class FrontendController extends Controller
             $html .=  '<p>Фамилия: ' . $surName . '</p>';
             $html .=  '<p>Почта: ' . $email . '</p>';
             $html .=  '<p>Сообщение: ' . $message . '</p>';
-            $html .= '</body></html>'; 
-            $crlf = "\n"; 
-            $hdrs = array( 
-                          'From'    => $email, 
-                          'Subject' => 'Обратная связь с сайта ' . $this->site['Name']  
-                          ); 
+            $html .= '</body></html>';             
             
-            $mime = new Mail_mime($crlf); 
-            
-            $mime->setHTMLBody($html); 
-            
-            //do not ever try to call these lines in reverse order 
-            $body = $mime->get(); 
-            $hdrs = $mime->headers($hdrs); 
-            
-            $mail =& Mail::factory('mail','-f ' . $this->site['Email']);   // add the fifth parameter for the PHP mail() function 
-            $mail->send('postmaster@localhost', $hdrs, $body);             
+            $mail = new PHPMailer();
+            $mail->setFrom('info@splus-com.com', 'Новое сообщение');
+            $mail->addAddress($this->site['Email'], 'Administration');
+            $mail->Subject = 'Новое сообщение!';
+            $mail->msgHTML = $html;
+            $mail->send();
             
         }
     }
