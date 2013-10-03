@@ -121,6 +121,8 @@ class FrontendController extends Controller
     {
         $page = $this->preparePage($this->getPage());
         
+        array_debug($page);
+        
         if(!empty($page))
         {
             $this->page_id = $page['Id'];
@@ -146,7 +148,7 @@ class FrontendController extends Controller
             'target' => $page['Target'],
         );
         
-        array_debug($array);
+        
         
         /*
         switch($page['Target'])
