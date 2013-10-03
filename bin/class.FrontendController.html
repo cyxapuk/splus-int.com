@@ -144,13 +144,7 @@ class FrontendController extends Controller
             $mail->Subject = 'Новое сообщение!';
             $mail->isHTML(true);
             $mail->Body = $html;
-
-            if (!$mail->send()) {
-                echo "Mailer Error: " . $mail->ErrorInfo;
-            } else {
-                echo "Message sent!";
-            }
-            
+            $mail->send();
         }
     }
     
