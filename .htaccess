@@ -27,6 +27,8 @@ RewriteRule splus-int.com/www/shedule/([0-9]+)/([0-9]+)/([0-9]+)/$ /index.php?pa
 RewriteRule splus-int.com/www/gallery/$ /index.php?page_alias=gallery
 RewriteRule splus-int.com/www/gallery/([0-9]+)/([0-9]+)/$ /index.php?page_alias=galleryObjectList&catalog_id=$1&category_id=$2 [L,QSA]
 
+RewriteRule splus-int.com/www/lang/(.*)/$ /index.php?lang=$1 [L,QSA]
+
 Rewritecond %{REQUEST_FILENAME} !-d
 Rewritecond %{REQUEST_FILENAME} !-f
 RewriteRule splus-int.com/www/([^/.]*) /index.php?page_alias=$1 [NS,QSA]
