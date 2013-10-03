@@ -105,7 +105,7 @@
     {if $array.objectlist[1].object[$image|md5].value_content}
     <p><img src="{$SITE_URL}catalog_files/object/image/{$array.objectlist[1].object[$image|md5].value_content}" /></p>
     {/if}
-    {$array.objectlist[1].object[$bdescription|md5].value_content[$array.site['LangId']]}
+    {$array.objectlist[1].object[$bdescription|md5].value_content[$array.site['LangId']]|html_entity_decode}
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">{if $site['LangId'] == 1}Закрыть{else}Close{/if}</button>
