@@ -38,12 +38,28 @@ class FrontendController extends Controller
         $this->user->SetSessionId($this->session->GetSessionId());
         $this->user->Init();
         
+        $this->lang = $this->clearDigit( $this->gvar('lang','') );
         $this->lang_id = $this->clearDigit( $this->gvar('lang_id',0) );
         $this->page_id = $this->clearDigit( $this->gvar('page_id',0) );
         $this->page_alias = $this->clearStr( $this->gvar('page_alias','') );
         
         $this->site = $this->prepareSite($this->model->getSite());
         
+    }
+    
+    protected function getLanguageAbr($lang_abr = "")
+    {
+        if(!empty($lang_abr))
+        {
+            $language = $this->model->getLanguageByAbr($lang_abr);
+            
+            if(!empty($language))
+            {
+                return $language['Id'];
+            }
+        }
+        
+        return false;
     }
     
     protected function prepareSite($site = object)
@@ -53,6 +69,11 @@ class FrontendController extends Controller
         if(!empty($site['NameML']))
         {
             $site['Title'] = $this->get1dFrom2d(unserialize($site['NameML']));
+        }
+        
+        if(!empty($this->lang))
+        {
+            $site['LangId'] = $this->getLanguageAbr($this->lang);
         }
         
         if(!empty($this->lang_id))

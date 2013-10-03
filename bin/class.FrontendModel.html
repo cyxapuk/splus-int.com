@@ -76,6 +76,14 @@ class FrontendModel extends Model
     {
         $sql = "SELECT * FROM " . MYSQL_PROJECT . ".system_language WHERE Status = 1";
         return $this->dbconn->GetAll($sql);        
-    }            
+    }
+    
+    public function getLanguageByAbr($Abr = "")
+    {
+        if(empty($Abr))  return false;
+        
+        $sql = "SELECT * FROM " . MYSQL_PROJECT . ".system_language WHERE Abr = '" . $Abr . "'";
+        return $this->dbconn->GetOne($sql);
+    }                
     
 }
