@@ -3,7 +3,7 @@
 /**
  * 
  * Конфирурационный файл
- * @package Kokon.ru
+ * @package Splus-com.int
  *
 **/
 
@@ -13,6 +13,7 @@ define('SITE_URL_PATH',"/");
 define('SITE_URL',"http://".$_SERVER['HTTP_HOST'].SITE_URL_PATH);
 define('PATH',realpath(dirname(__FILE__)."/../")."/");
 define('BIN_PATH',dirname(dirname(__FILE__))."/bin/");
+define('INCLUDE_PATH',BIN_PATH."/include/");
 define('MODULE_PATH',BIN_PATH."/module/");
 define('WWW_PATH',realpath(PATH."www")."/");
 define('TPL_PATH',PATH."tpl/");

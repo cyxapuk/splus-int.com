@@ -128,6 +128,9 @@ class FrontendController extends Controller
             $email = $this->clearStr( $this->gvar('email','') );
             $message = $this->clearStr( $this->gvar('message','') );
             
+            include_once(INCLUDE_PATH . '/Mail_Mime/mime.php');
+            include_once(INCLUDE_PATH . '/Mail_Mime/mimePart.php');
+            
             echo "[$name] [$surName] [$email] [$message]" . "<br />";
         }
     }
