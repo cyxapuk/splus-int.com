@@ -17,7 +17,6 @@
 </head>
 
 {assign var="description" value="Описание"}
-{assign var="bdescription" value="Расширенное описание"}
 {assign var="button" value="Кнопка"}
 
 <body>
@@ -91,26 +90,26 @@
 	</div>
     
     
+{assign var="header" value="Заголовок"}
+{assign var="bdescription" value="Расширенное описание"}
+{assign var="image" value="Изображение"}    
     
-    
+{if $array.objectlist[1]}    
 <!-- Modal -->
-<div class="modal hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:800px; left:40%;">
+<div class="modal hide fade" id="myModal{$array.objectlist[1].object_id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:800px; left:40%;">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Елена Батурина подала в суд на Минфин</h3>
+    <h3 id="myModalLabel">{$array.objectlist[1].object[$header|md5].value_content[$array.site['LangId']]}</h3>
   </div>
   <div class="modal-body">
-    <p><img src="{$_FILES_URL}images/baturina.jpg" /></p>
-    <p>Арбитражный суд Москвы зарегистрировал иск ЗАО ТД «Сетуньская», компании Елены Батуриной, к министерству финансов России о взыскании 34 миллиардов рублей, сообщает РИА Новости. Иск поступил в суд 23 сентября, но к производству пока не принят.</p>
-    <p>Батурина несколько лет судится с органами государственной власти из-за принадлежности земельных участков на пересечении Минской и Староволынской улиц. Компания «Сетуньская» заявляет, что 16 гектаров на этой территории принадлежит ей, что и было оформлено в 2003 году после приобретения на вторичном рынке у АОЗТ «Матвеевское».</p>
-    <p>На территории планировалось построить многофункциональный комплекс в рамках проекта, который первоначально назывался «Сетунь-хиллс». Между тем, государство заявляет, что имеет полное право на эти участки, поскольку земля была зарезервирована под размещение иностранных посольств президентским указом 1993 года.</p>
-    <p>Хотя Батурина настаивала на том, что данный указ является незаконным, поскольку «Матвеевское» приобрело данные земли до опубликования указа, российские суды ее требования не удовлетворили. Последняя тяжба завершилась в июле, когда Высший Арбитражный суд принял сторону Росимущества. </p>
+    <p><img src="{$SITE_URL}catalog_files/object/image/{$array.object.object[$image|md5].value_content}" /></p>
+    {$array.objectlist[1].object[$bdescription|md5].value_content[$array.site['LangId']]}
   </div>
   <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Закрыть</button>
+    <button class="btn" data-dismiss="modal" aria-hidden="true">{if $site['LangId'] == 1}Закрыть{else}Close{/if}</button>
   </div>
 </div>    
-
+{/if}
 
 <!-- Modal Contact Form -->
 <div class="modal hide fade" id="myModalContact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
