@@ -62,6 +62,20 @@ class FrontendModel extends Model
         
         $sql = "SELECT * FROM " . MYSQL_PROJECT . ".system_template WHERE Id = '" . $Id . "'";
         return $this->dbconn->GetOne($sql);
-    }        
+    }
+    
+    public function getLanguage($Id = 0)
+    {
+        if(empty($Id))  return false;
+        
+        $sql = "SELECT * FROM " . MYSQL_PROJECT . ".system_language WHERE Id = '" . $Id . "'";
+        return $this->dbconn->GetOne($sql);
+    }    
+    
+    public function GetLanguageList()
+    {
+        $sql = "SELECT * FROM " . MYSQL_PROJECT . ".system_language WHERE Status = 1";
+        return $this->dbconn->GetAll($sql);        
+    }            
     
 }

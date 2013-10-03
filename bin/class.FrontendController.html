@@ -139,14 +139,17 @@ class FrontendController extends Controller
         
         $array = array
         (
+            'site' => $this->model->getSite(),
             'page' => $page, 
             'pagelist' => $pagelist,
             'pagecontent' => $pagecontent,
+            'languages' => $this->model->GetLanguageList(),            
             'headmenulist' => $this->model->getMenuPageList(2), 
             'target' => $page['Target'],
         );
         
-        
+        array_debug($array);
+        exit;
         
         /*
         switch($page['Target'])
@@ -222,7 +225,7 @@ class FrontendController extends Controller
         }
         */
         
-        $this->displayThread($array);        
+        #$this->displayThread($array);        
     }
         
 
