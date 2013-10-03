@@ -123,25 +123,25 @@
       <div class="control-group">
         <label class="control-label" for="inputName">Имя</label>
         <div class="controls">
-          <input type="text" id="inputName" placeholder="Имя" required>
+          <input type="text" name="name" id="inputName" placeholder="Имя" required>
         </div>
       </div>
       <div class="control-group">
         <label class="control-label" for="inputSurName">Фамилия</label>
         <div class="controls">
-          <input type="text" id="inputSurName" placeholder="Фамилия" required>
+          <input type="text" name="surName" id="inputSurName" placeholder="Фамилия" required>
         </div>
       </div>      
       <div class="control-group">
         <label class="control-label" for="inputEmail">Email</label>
         <div class="controls">
-          <input type="email" id="inputEmail" placeholder="Email" required>
+          <input type="email" name="email" id="inputEmail" placeholder="Email" required>
         </div>
       </div>
       <div class="control-group">
         <label class="control-label" for="inputEmail">Сообщение</label>
         <div class="controls">
-          <textarea id="message" maxlength="10" rows="4"></textarea>
+          <textarea id="message" name="message" maxlength="10" rows="4"></textarea>
         </div>
       </div>      
       <div class="control-group">

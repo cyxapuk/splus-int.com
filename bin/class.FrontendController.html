@@ -121,7 +121,15 @@ class FrontendController extends Controller
     {
         $send = $this->clearDigit( $this->gvar('send',0) );
         
-        echo "[" . $send . "]" . "<br />";
+        if(!empty($send))
+        {
+            $name = $this->clearStr( $this->gvar('name','') );
+            $surName = $this->clearStr( $this->gvar('surName','') );
+            $email = $this->clearStr( $this->gvar('email','') );
+            $message = $this->clearStr( $this->gvar('message','') );
+            
+            echo "[$name] [$surName] [$email] [$message]" . "<br />";
+        }
     }
     
     public function displayPage($target = "")
