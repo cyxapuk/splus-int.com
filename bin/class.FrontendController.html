@@ -140,7 +140,7 @@ class FrontendController extends Controller
             
             $mail = new PHPMailer();
             $mail->CharSet = "UTF-8";
-            $mail->setFrom('info@splus-com.com');
+            $mail->setFrom('info@splus-com.com','Обратная связь сайта ' . $this->site['Name']);
             $mail->addAddress($this->site['Email'], 'Administration');
             $mail->Subject = 'Новое сообщение!';
             $mail->isHTML(true);
