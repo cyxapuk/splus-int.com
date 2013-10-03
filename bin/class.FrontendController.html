@@ -2,7 +2,7 @@
 
 /**
  * Класс контроллера
- * @package Kokon.ru
+ * @package Splus-int.com
 **/
 
 class FrontendController extends Controller
@@ -146,6 +146,9 @@ class FrontendController extends Controller
             'target' => $page['Target'],
         );
         
+        array_debug($array);
+        
+        /*
         switch($page['Target'])
         {
             case 'announcements-list.tpl':
