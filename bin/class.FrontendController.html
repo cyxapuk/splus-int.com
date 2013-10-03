@@ -53,6 +53,9 @@ class FrontendController extends Controller
         {
             $language = $this->model->getLanguageByAbr($lang_abr);
             
+            array_debug($language);
+            exit;
+            
             if(!empty($language))
             {
                 return $language['Id'];
