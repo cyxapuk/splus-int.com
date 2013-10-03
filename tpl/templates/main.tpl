@@ -113,6 +113,63 @@
 </div>    
 {/if}
 
+{if $array.objectlist[2]}    
+<!-- Modal -->
+<div class="modal hide fade" id="myModal{$array.objectlist[2].object_id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:800px; left:40%;">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">{$array.objectlist[2].object[$header|md5].value_content[$array.site['LangId']]}</h3>
+  </div>
+  <div class="modal-body">
+    {if $array.objectlist[2].object[$image|md5].value_content}
+    <p><img src="{$SITE_URL}catalog_files/object/image/{$array.objectlist[2].object[$image|md5].value_content}" /></p>
+    {/if}
+    {$array.objectlist[2].object[$bdescription|md5].value_content[$array.site['LangId']]|html_entity_decode}
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">{if $site['LangId'] == 1}Закрыть{else}Close{/if}</button>
+  </div>
+</div>    
+{/if}
+
+{if $array.objectlist[3]}    
+<!-- Modal -->
+<div class="modal hide fade" id="myModal{$array.objectlist[3].object_id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:800px; left:40%;">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">{$array.objectlist[3].object[$header|md5].value_content[$array.site['LangId']]}</h3>
+  </div>
+  <div class="modal-body">
+    {if $array.objectlist[3].object[$image|md5].value_content}
+    <p><img src="{$SITE_URL}catalog_files/object/image/{$array.objectlist[3].object[$image|md5].value_content}" /></p>
+    {/if}
+    {$array.objectlist[3].object[$bdescription|md5].value_content[$array.site['LangId']]|html_entity_decode}
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">{if $site['LangId'] == 1}Закрыть{else}Close{/if}</button>
+  </div>
+</div>    
+{/if}
+
+{if $array.objectlist[4]}    
+<!-- Modal -->
+<div class="modal hide fade" id="myModal{$array.objectlist[4].object_id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:800px; left:40%;">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">{$array.objectlist[4].object[$header|md5].value_content[$array.site['LangId']]}</h3>
+  </div>
+  <div class="modal-body">
+    {if $array.objectlist[4].object[$image|md5].value_content}
+    <p><img src="{$SITE_URL}catalog_files/object/image/{$array.objectlist[4].object[$image|md5].value_content}" /></p>
+    {/if}
+    {$array.objectlist[4].object[$bdescription|md5].value_content[$array.site['LangId']]|html_entity_decode}
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">{if $site['LangId'] == 1}Закрыть{else}Close{/if}</button>
+  </div>
+</div>    
+{/if}
+
 <!-- Modal Contact Form -->
 <div class="modal hide fade" id="myModalContact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
