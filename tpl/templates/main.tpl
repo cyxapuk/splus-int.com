@@ -16,6 +16,9 @@
 <script src="{$_FILES_URL}js/script.js"></script>
 </head>
 
+{assign var="description" value="Описание"}
+{assign var="bdescription" value="Расширенное описание"}
+
 <body>
 	<div class="container">
       {if $array.languages}
@@ -40,7 +43,7 @@
             {if $array.objectlist}
                {foreach from=$array.objectlist key=key item=object}
                     {if $key == 1}
-                    11111
+                        {$object.object[$description|md5].value_content[$array.site['LangId']]}
                     {/if}
                {/foreach}
             {/if}            
