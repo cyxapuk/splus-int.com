@@ -40,17 +40,10 @@
 	        <div class="span1"></div>          
       		<div class="span4 box">
             <h5>
-            {if $array.objectlist}
-               {foreach from=$array.objectlist key=key item=object}
-                    {if $key == 1}
-                        {$object.object[$description|md5].value_content[$array.site['LangId']]}
-                    {/if}
-               {/foreach}
-            {/if}            
-            Арбитражный суд Москвы зарегистрировал иск ЗАО ТД «Сетуньская», компании Елены Батуриной, к министерству финансов России о взыскании 34 миллиардов рублей, сообщает РИА Новости.
-            На территории планировалось построить многофункциональный комплекс в рамках проекта.
-            </h5>
-            <p class="more-link"><a class="btn btn-warning" data-toggle="modal" href="#myModal">Узнать больше!</a></p>
+            {if $array.objectlist[1]}
+                <h5>{$array.objectlist[1].object[$description|md5].value_content[$array.site['LangId']]}</h5>
+            <p class="more-link"><a class="btn btn-warning" data-toggle="modal" href="#myModal{$array.objectlist[1].object_id}">Узнать больше!</a></p>
+            {/if}
             </div>
       		<div class="span2"></div>
       		<div class="span4 box">
