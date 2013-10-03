@@ -180,16 +180,14 @@ class FrontendController extends Controller
         $catalog->setCategoryId(1);  
         $objectlist = $catalog->getObjectList();
         
-        array_debug($objectlist);
-        exit;
-        
         $array = array
         (
             'site' => $this->site,
             'page' => $page, 
             'pagelist' => $pagelist,
             'pagecontent' => $pagecontent,
-            'languages' => $this->model->GetLanguageList(),            
+            'languages' => $this->model->GetLanguageList(),
+            'objectlist' => $objectlist,            
             'target' => $page['Target'],
         );
         
