@@ -119,7 +119,7 @@
     <h3 id="myModalLabel">Связаться с нами</h3>
   </div>
   <div class="modal-body">
-    <form class="form-horizontal" action="{$SITE_URL}">
+    <form class="form-horizontal" action="{$SITE_URL}" method="post">
       <div class="control-group">
         <label class="control-label" for="inputName">Имя</label>
         <div class="controls">
@@ -141,7 +141,7 @@
       <div class="control-group">
         <label class="control-label" for="inputEmail">Сообщение</label>
         <div class="controls">
-          <textarea id="message" name="message" maxlength="10" rows="4"></textarea>
+          <textarea id="message" name="message" maxlength="1000" rows="4"></textarea>
         </div>
       </div>      
       <div class="control-group">
