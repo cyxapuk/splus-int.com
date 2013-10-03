@@ -12,6 +12,9 @@ header("content-type: text/html; charset=utf-8");
 
 include_once(dirname(__FILE__).'/includer.html');
 
+echo 'here2';
+exit;
+
 $Fabrika = new Fabrika;
 
 Fabrika::addTools('controller', array(), 'FrontendController');
