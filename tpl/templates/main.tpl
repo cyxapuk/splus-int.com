@@ -40,7 +40,7 @@
             {if $array.objectlist}
                {foreach from=$array.objectlist key=key item=object}
                     {if $key == 1}
-                    
+                    11111
                     {/if}
                {/foreach}
             {/if}            
