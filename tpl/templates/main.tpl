@@ -18,6 +18,16 @@
 
 <body>
 	<div class="container">
+    {if $array.languages}
+        <div class="row flags">
+        {foreach from=$array.languages key=key item=language}
+            <div class="span1"><a href="{$SITE_URL}{language.Abr}"><img src="{$_FILES_URL}images/flags/{language.Abr}.png" class="active"></a></div>
+        {/foreach}
+        <div class="span4 contact-link"><a class="btn btn-inverse contact-link" data-toggle="modal" href="#myModalContact">Обратная связь</a></div>
+        </div>    
+    {/if}
+    
+      <!--
       <div class="row flags">
 			<div class="span1"><a href="#"><img src="{$_FILES_URL}images/flags/ru.png" class="active"></a></div>
             <div class="span1"><a href="#"><img src="{$_FILES_URL}images/flags/en.png"></a></div>
@@ -29,6 +39,7 @@
             <div class="span1"><a href="#"><img src="{$_FILES_URL}images/flags/nw.png"></a></div>
             <div class="span4 contact-link"><a class="btn btn-inverse contact-link" data-toggle="modal" href="#myModalContact">Обратная связь</a></div>
       </div>
+      -->
       <div class="row">
       		<div class="span12 br-topline">&nbsp;</div>
       </div>
