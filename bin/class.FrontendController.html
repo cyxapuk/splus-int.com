@@ -175,6 +175,14 @@ class FrontendController extends Controller
             }
         }
         
+        $catalog = $this->initModule('catalog');
+        $catalog->setCatalogId(1);
+        $catalog->setCategoryId(1);  
+        $objectlist = $catalog->getObjectList();
+        
+        array_debug($objectlist);
+        exit;
+        
         $array = array
         (
             'site' => $this->site,
