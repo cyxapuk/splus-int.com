@@ -102,7 +102,9 @@
     <h3 id="myModalLabel">{$array.objectlist[1].object[$header|md5].value_content[$array.site['LangId']]}</h3>
   </div>
   <div class="modal-body">
-    <p><img src="{$SITE_URL}catalog_files/object/image/{$array.object.object[$image|md5].value_content}" /></p>
+    {if $array.objectlist[1].object[$image|md5].value_content}
+    <p><img src="{$SITE_URL}catalog_files/object/image/{$array.objectlist[1].object[$image|md5].value_content}" /></p>
+    {/if}
     {$array.objectlist[1].object[$bdescription|md5].value_content[$array.site['LangId']]}
   </div>
   <div class="modal-footer">
