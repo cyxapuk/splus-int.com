@@ -18,28 +18,15 @@
 
 <body>
 	<div class="container">
-    {if $array.languages}
+      {if $array.languages}
         <div class="row flags">
         {foreach from=$array.languages key=key item=language}
             <div class="span1"><a href="{$SITE_URL}{$language.Abr}"><img src="{$_FILES_URL}images/flags/{$language.Abr}.png"{if $site.LangId == $language.Id} class="active"{/if}></a></div>
         {/foreach}
         <div class="span4 contact-link"><a class="btn btn-inverse contact-link" data-toggle="modal" href="#myModalContact">Обратная связь</a></div>
         </div>    
-    {/if}
+      {/if}
     
-      <!--
-      <div class="row flags">
-			<div class="span1"><a href="#"><img src="{$_FILES_URL}images/flags/ru.png" class="active"></a></div>
-            <div class="span1"><a href="#"><img src="{$_FILES_URL}images/flags/en.png"></a></div>
-            <div class="span1"><a href="#"><img src="{$_FILES_URL}images/flags/fr.png"></a></div>
-            <div class="span1"><a href="#"><img src="{$_FILES_URL}images/flags/es.png"></a></div>
-            <div class="span1"><a href="#"><img src="{$_FILES_URL}images/flags/de.png"></a></div>
-            <div class="span1"><a href="#"><img src="{$_FILES_URL}images/flags/fi.png"></a></div>
-            <div class="span1"><a href="#"><img src="{$_FILES_URL}images/flags/sw.png"></a></div>
-            <div class="span1"><a href="#"><img src="{$_FILES_URL}images/flags/nw.png"></a></div>
-            <div class="span4 contact-link"><a class="btn btn-inverse contact-link" data-toggle="modal" href="#myModalContact">Обратная связь</a></div>
-      </div>
-      -->
       <div class="row">
       		<div class="span12 br-topline">&nbsp;</div>
       </div>
@@ -132,7 +119,7 @@
     <h3 id="myModalLabel">Связаться с нами</h3>
   </div>
   <div class="modal-body">
-    <form class="form-horizontal">
+    <form class="form-horizontal" action="{$SITE_URL}">
       <div class="control-group">
         <label class="control-label" for="inputName">Имя</label>
         <div class="controls">
@@ -162,6 +149,7 @@
           <button type="submit" class="btn btn-primary">Отправить сообщение!</button>
         </div>
       </div>
+      <input type="hidden" name="send" value="1" />
     </form>
   </div>
   <div class="modal-footer">

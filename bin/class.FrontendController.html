@@ -117,8 +117,17 @@ class FrontendController extends Controller
         
     }
     
+    protected function sendMail()
+    {
+        $send = $this->clearDigit( $this->gvar('send',0) );
+        
+        echo "[" . $send . "]" . "<br />";
+    }
+    
     public function displayPage($target = "")
     {
+        self::sendMail();
+        
         $page = $this->preparePage($this->getPage());
         
         if(!empty($page))
