@@ -139,9 +139,9 @@ class FrontendController extends Controller
             $html .= '</body></html>';             
             
             $mail = new PHPMailer();
-            $mail->setFrom('info@splus-com.com');
+            $mail->setFrom('info@splus-com.com', 'New message');
             $mail->addAddress($this->site['Email'], 'Administration');
-            $mail->Subject = 'Новое сообщение!';
+            $mail->Subject = 'New message!';
             $mail->isHTML(true);
             $mail->Body = $html;
             $mail->send();
