@@ -38,7 +38,7 @@ class FrontendController extends Controller
         $this->user->SetSessionId($this->session->GetSessionId());
         $this->user->Init();
         
-        $this->lang = $this->clearDigit( $this->gvar('lang','') );
+        $this->lang = $this->clearStr( $this->gvar('lang','') );
         $this->lang_id = $this->clearDigit( $this->gvar('lang_id',0) );
         $this->page_id = $this->clearDigit( $this->gvar('page_id',0) );
         $this->page_alias = $this->clearStr( $this->gvar('page_alias','') );
@@ -52,9 +52,6 @@ class FrontendController extends Controller
         if(!empty($lang_abr))
         {
             $language = $this->model->getLanguageByAbr($lang_abr);
-            
-            array_debug($language);
-            exit;
             
             if(!empty($language))
             {
