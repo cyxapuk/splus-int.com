@@ -143,7 +143,12 @@ class FrontendController extends Controller
             $mail->addAddress($this->site['Email'], 'Administration');
             $mail->Subject = 'Новое сообщение!';
             $mail->msgHTML = $html;
-            $mail->send();
+
+            if (!$mail->send()) {
+                echo "Mailer Error: " . $mail->ErrorInfo;
+            } else {
+                echo "Message sent!";
+            }
             
         }
     }
