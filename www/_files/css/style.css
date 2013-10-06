@@ -1,4 +1,5 @@
 /* CSS Document */
+@import url(http://fonts.googleapis.com/css?family=Russo+One&subset=latin,cyrillic);
 
 body
 {
@@ -64,6 +65,7 @@ body
 	padding:5px 10px 5px 10px;
     line-height:110px;
     margin-top:40px;
+    font-family: 'Russo One', sans-serif;
 }
 
 .logo
