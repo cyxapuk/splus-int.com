@@ -18,7 +18,10 @@
 <script src="{$_FILES_URL}js/script.js"></script>
 </head>
 
-[{#contact_$site['LangAbr']#}]
+{assign var="contact_button" value="#contact+`$site['LangAbr']`#"}
+
+
+[{$contact_button}]
 
 {if $site['LangId'] == 1}
     {assign var="terms" value="Все права защищены"}
