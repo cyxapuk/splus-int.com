@@ -1,4 +1,4 @@
-{config_load file='config.conf'}
+
 
 <!DOCTYPE html>
 <html lang="en">
