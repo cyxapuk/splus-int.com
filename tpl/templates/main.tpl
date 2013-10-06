@@ -18,7 +18,7 @@
 <script src="{$_FILES_URL}js/script.js"></script>
 </head>
 
-[#description#]
+[{#description#}]
 
 {if $site['LangId'] == 1}
     {assign var="terms" value="Все права защищены"}
