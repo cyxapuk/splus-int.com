@@ -32,7 +32,7 @@
       {if $array.languages}
         <div class="row flags">
         {foreach from=$array.languages key=key item=language}
-            <div class="span1"><a href="{$SITE_URL}?lang={$language.Abr}"><img src="{$_FILES_URL}images/flags/{$language.Abr}.png"{if $site.LangId == $language.Id} class="active"{/if}></a></div>
+            <div class="span1"><a href="{$SITE_URL}{$language.Abr}/"><img src="{$_FILES_URL}images/flags/{$language.Abr}.png"{if $site.LangId == $language.Id} class="active"{/if}></a></div>
         {/foreach}
         <div class="span4 contact-link"><a class="btn btn-inverse contact-link" data-toggle="modal" href="#myModalContact">{$smarty.config[$button_contact]}</a></div>
         </div>    
