@@ -1,34 +1,25 @@
 RewriteEngine on
 
+# Подключение админки на сабдамен
 RewriteCond %{HTTP_HOST} ^admin.splus-int.com$
 RewriteCond %{REQUEST_URI} !repro/www/
 RewriteRule (.*) /repro/www/$1 [L]
 
+# Вывод сайта из подпапки 
 RewriteCond %{HTTP_HOST} ^splus-int.com$ [NC,OR]
 RewriteCond %{HTTP_HOST} ^www.splus-int.com$
 RewriteCond %{REQUEST_URI} !splus-int.com/www/
 RewriteRule (.*) /splus-int.com/www/$1 [L]
 
-RewriteRule splus-int.com/www/main/$ /index.php?page_alias=welcome
-RewriteRule splus-int.com/www/main/([0-9]+)/$ /index.php?page_alias=welcome&catalog_id=$1 [L,QSA]
-RewriteRule splus-int.com/www/main/([0-9]+)/([0-9]+)/$ /index.php?page_alias=welcome&catalog_id=$1&category_id=$2 [L,QSA]
-RewriteRule splus-int.com/www/main/([0-9]+)/([0-9]+)/([0-9]+)/$ /index.php?page_alias=welcome&catalog_id=$1&category_id=$2&object_id=$3 [L,QSA]
+# Пример использования специальных настроек для каталога
+#RewriteRule splus-int.com/www/main/$ /index.php?page_alias=welcome
+#RewriteRule splus-int.com/www/main/([0-9]+)/$ /index.php?page_alias=welcome&catalog_id=$1 [L,QSA]
+#RewriteRule splus-int.com/www/main/([0-9]+)/([0-9]+)/$ /index.php?page_alias=welcome&catalog_id=$1&category_id=$2 [L,QSA]
+#RewriteRule splus-int.com/www/main/([0-9]+)/([0-9]+)/([0-9]+)/$ /index.php?page_alias=welcome&catalog_id=$1&category_id=$2&object_id=$3 [L,QSA]
 
-RewriteRule splus-int.com/www/events/$ /index.php?page_alias=events
-RewriteRule splus-int.com/www/events/([0-9]+)/$ /index.php?page_alias=events&catalog_id=$1 [L,QSA]
-RewriteRule splus-int.com/www/events/([0-9]+)/([0-9]+)/$ /index.php?page_alias=events&catalog_id=$1&category_id=$2 [L,QSA]
-RewriteRule splus-int.com/www/events/([0-9]+)/([0-9]+)/([0-9]+)/$ /index.php?page_alias=eventsObject&catalog_id=$1&category_id=$2&object_id=$3 [L,QSA]
+# Подключение многоязычности
+RewriteRule splus-int.com/www/(ru|en|fr|es|de|fi|sv|no)/$ /index.php?lang=$1
 
-RewriteRule splus-int.com/www/shedule/$ /index.php?page_alias=shedule
-RewriteRule splus-int.com/www/shedule/([0-9]+)/$ /index.php?page_alias=shedule&catalog_id=$1 [L,QSA]
-RewriteRule splus-int.com/www/shedule/([0-9]+)/([0-9]+)/$ /index.php?page_alias=shedule&catalog_id=$1&category_id=$2 [L,QSA]
-RewriteRule splus-int.com/www/shedule/([0-9]+)/([0-9]+)/([0-9]+)/$ /index.php?page_alias=sheduleObject&catalog_id=$1&category_id=$2&object_id=$3 [L,QSA]
-
-RewriteRule splus-int.com/www/gallery/$ /index.php?page_alias=gallery
-RewriteRule splus-int.com/www/gallery/([0-9]+)/([0-9]+)/$ /index.php?page_alias=galleryObjectList&catalog_id=$1&category_id=$2 [L,QSA]
-
-RewriteRule splus-int.com/www/lang/(.*)/$ /index.php?lang=$1 [L,QSA]
-
+# Проверка наличия файла или папки 
 Rewritecond %{REQUEST_FILENAME} !-d
 Rewritecond %{REQUEST_FILENAME} !-f
-RewriteRule splus-int.com/www/([^/.]*) /index.php?page_alias=$1 [NS,QSA]
