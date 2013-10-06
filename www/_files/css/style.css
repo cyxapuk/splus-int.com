@@ -42,12 +42,12 @@ body
 
 .br
 {
-	line-height:30px;
+	line-height:100px;
 }
 
 .box
 {
-	height:270px;
+	height:220px;
     background: #41b0d8; /* обязательно для ie */
     -webkit-box-shadow: 0px 0px 25px #222;
     -moz-box-shadow: 0px 0px 25px #222;
@@ -78,6 +78,11 @@ body
 {
 	text-align:right;
 	padding-right:10px;
+}
+
+.more-link
+{
+    margin-top:110px;
 }
 
 .modal-frame
