@@ -10,7 +10,7 @@
 {/if}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{$site['LangAbr']}">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 {if isset($title)}
