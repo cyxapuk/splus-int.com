@@ -76,11 +76,11 @@
             <div class="span2"></div>                        
       </div>
 	  <div class="row">            
-      		<div class="span1"></div>
-            <div class="span4 label-text"><h1>System</h1></div>
+      		<div class="span2"></div>
+            <div class="span3 label-text"><h1>System</h1></div>
       		<div class="span2 logo"><img src="{$_FILES_URL}images/logo.png"></div>
-      		<div class="span4 label-text"><h1>Plus</h1></div> 
-            <div class="span1"></div>                       
+      		<div class="span3 label-text"><h1>Plus</h1></div> 
+            <div class="span2"></div>                       
       </div> 
 	  <div class="row">  
 	        <div class="span2"></div>          
