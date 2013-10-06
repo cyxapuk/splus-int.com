@@ -18,9 +18,9 @@
 <script src="{$_FILES_URL}js/script.js"></script>
 </head>
 
-{assign var="contact_button" value="contact_`$site['LangAbr']`"}
+{assign var="button_contact" value="button_contact_`$site['LangAbr']`"}
+{assign var="button_more" value="button_close__`$site['LangAbr']`"}
 
-[{$smarty.config[$contact_button]}]
 
 {if $site['LangId'] == 1}
     {assign var="terms" value="Все права защищены"}
@@ -51,7 +51,7 @@
         {foreach from=$array.languages key=key item=language}
             <div class="span1"><a href="{$SITE_URL}?lang={$language.Abr}"><img src="{$_FILES_URL}images/flags/{$language.Abr}.png"{if $site.LangId == $language.Id} class="active"{/if}></a></div>
         {/foreach}
-        <div class="span4 contact-link"><a class="btn btn-inverse contact-link" data-toggle="modal" href="#myModalContact">{$contact_button}</a></div>
+        <div class="span4 contact-link"><a class="btn btn-inverse contact-link" data-toggle="modal" href="#myModalContact">{$smarty.config[$button_contact]}</a></div>
         </div>    
       {/if}
     
@@ -66,14 +66,14 @@
       		<div class="span3 box">
             {if $array.objectlist[1]}
                 <h5 class="center">{$array.objectlist[1].object[#description#|md5].value_content[$array.site['LangId']]|html_entity_decode}</h5>
-            <p class="more-link"><a class="btn btn-warning" data-toggle="modal" href="#myModal{$array.objectlist[1].object_id}">{$more_button}</a></p>
+            <p class="more-link"><a class="btn btn-warning" data-toggle="modal" href="#myModal{$array.objectlist[1].object_id}">{$smarty.config[$button_more]}</a></p>
             {/if}
             </div>
       		<div class="span2"></div>
       		<div class="span3 box">
             {if $array.objectlist[2]}
                 <h5 class="center">{$array.objectlist[2].object[#description#|md5].value_content[$array.site['LangId']]|html_entity_decode}</h5>
-            <p class="more-link"><a class="btn btn-warning" data-toggle="modal" href="#myModal{$array.objectlist[2].object_id}">{$more_button}</a></p>
+            <p class="more-link"><a class="btn btn-warning" data-toggle="modal" href="#myModal{$array.objectlist[2].object_id}">{$smarty.config[$button_more]}</a></p>
             {/if}
             </div>
             <div class="span2"></div>                        
@@ -90,14 +90,14 @@
       		<div class="span3 box">
             {if $array.objectlist[3]}
                 <h5 class="center">{$array.objectlist[3].object[#description#|md5].value_content[$array.site['LangId']]|html_entity_decode}</h5>
-            <p class="more-link"><a class="btn btn-warning" data-toggle="modal" href="#myModal{$array.objectlist[3].object_id}">{$more_button}</a></p>
+            <p class="more-link"><a class="btn btn-warning" data-toggle="modal" href="#myModal{$array.objectlist[3].object_id}">{$smarty.config[$button_more]}</a></p>
             {/if}
             </div>
       		<div class="span2"></div>
       		<div class="span3 box">
             {if $array.objectlist[4]}
                 <h5 class="center">{$array.objectlist[4].object[#description#|md5].value_content[$array.site['LangId']]|html_entity_decode}</h5>
-            <p class="more-link"><a class="btn btn-warning" data-toggle="modal" href="#myModal{$array.objectlist[4].object_id}">{$more_button}</a></p>
+            <p class="more-link"><a class="btn btn-warning" data-toggle="modal" href="#myModal{$array.objectlist[4].object_id}">{$smarty.config[$button_more]}</a></p>
             {/if}
             </div>
             <div class="span2"></div>                        
