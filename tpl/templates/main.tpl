@@ -21,6 +21,7 @@
 {assign var="button_contact" value="button_contact_`$site['LangAbr']`"}
 {assign var="button_more" value="button_close_`$site['LangAbr']`"}
 
+[{$button_more}]
 
 {if $site['LangId'] == 1}
     {assign var="terms" value="Все права защищены"}
