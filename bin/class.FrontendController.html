@@ -187,10 +187,7 @@ class FrontendController extends Controller
     
     public function displayPage($target = "")
     {
-        #self::sendMail();
-        
-        array_debug($_REQUEST);
-        exit;
+        self::sendMail();
         
         $page = $this->preparePage($this->getPage());
         
