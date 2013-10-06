@@ -69,11 +69,6 @@ body
     font-size:20px;
 }
 
-h1
-{
-    font-family: 'Russo One', sans-serif;
-}
-
 .logo
 {
 	text-align:center;
@@ -109,6 +104,7 @@ h1
 {
 	line-height:120px;
 	color:#136886;
+    font-family: 'Russo One', sans-serif;
 }
 
 .center
