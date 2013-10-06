@@ -19,7 +19,7 @@
 </head>
 
 {assign var="button_contact" value="button_contact_`$site['LangAbr']`"}
-{assign var="button_more" value="button_close__`$site['LangAbr']`"}
+{assign var="button_more" value="button_close_`$site['LangAbr']`"}
 
 
 {if $site['LangId'] == 1}
