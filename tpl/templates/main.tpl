@@ -62,14 +62,14 @@
 	        <div class="span1"></div>          
       		<div class="span4 box">
             {if $array.objectlist[1]}
-                <h5>{$array.objectlist[1].object[$description|md5].value_content[$array.site['LangId']]}</h5>
+                <h5>{$array.objectlist[1].object[$description|md5].value_content[$array.site['LangId']]|html_entity_decode}</h5>
             <p class="more-link"><a class="btn btn-warning" data-toggle="modal" href="#myModal{$array.objectlist[1].object_id}">{$more_button}</a></p>
             {/if}
             </div>
       		<div class="span2"></div>
       		<div class="span4 box">
             {if $array.objectlist[2]}
-                <h5>{$array.objectlist[2].object[$description|md5].value_content[$array.site['LangId']]}</h5>
+                <h5>{$array.objectlist[2].object[$description|md5].value_content[$array.site['LangId']]|html_entity_decode}</h5>
             <p class="more-link"><a class="btn btn-warning" data-toggle="modal" href="#myModal{$array.objectlist[2].object_id}">{$more_button}</a></p>
             {/if}
             </div>
@@ -86,14 +86,14 @@
 	        <div class="span1"></div>          
       		<div class="span4 box">
             {if $array.objectlist[3]}
-                <h5>{$array.objectlist[3].object[$description|md5].value_content[$array.site['LangId']]}</h5>
+                <h5>{$array.objectlist[3].object[$description|md5].value_content[$array.site['LangId']]|html_entity_decode}</h5>
             <p class="more-link"><a class="btn btn-warning" data-toggle="modal" href="#myModal{$array.objectlist[3].object_id}">{$more_button}</a></p>
             {/if}
             </div>
       		<div class="span2"></div>
       		<div class="span4 box">
             {if $array.objectlist[4]}
-                <h5>{$array.objectlist[4].object[$description|md5].value_content[$array.site['LangId']]}</h5>
+                <h5>{$array.objectlist[4].object[$description|md5].value_content[$array.site['LangId']]|html_entity_decode}</h5>
             <p class="more-link"><a class="btn btn-warning" data-toggle="modal" href="#myModal{$array.objectlist[4].object_id}">{$more_button}</a></p>
             {/if}
             </div>
