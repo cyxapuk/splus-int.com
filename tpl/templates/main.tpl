@@ -18,7 +18,7 @@
 <script src="{$_FILES_URL}js/script.js"></script>
 </head>
 
-{assign var="contact_button" value="contact_ru"}
+{assign var="contact_button" value="contact_`$site['LangAbr']`"}
 
 [{$smarty.config[$contact_button]}]
 
