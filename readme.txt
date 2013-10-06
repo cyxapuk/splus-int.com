@@ -6,8 +6,8 @@ git clone https://github.com/cyxapuk/repro.git ./
 
 git clone https://github.com/cyxapuk/splus-int.com.git
 
-3) Из фронтэнда скопировать папку /copу/_config на два уровеня выше
+3) Из фронтэнда скопировать папку /_copу/_config на два уровеня выше
 
-4) Из фронтэнда скопировать файл /copy/.htaccess на два уроверня выше
+4) Из фронтэнда скопировать файл /_copy/.htaccess на два уроверня выше
 
 Все!
