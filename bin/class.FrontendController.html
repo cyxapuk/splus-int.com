@@ -84,6 +84,14 @@ class FrontendController extends Controller
             $site['LangId'] = $this->lang_id;
         }
         
+        if(!empty($site['LangId']))
+        {
+            if($Language = $this->getLanguage($site['LangId']))
+            {
+                $site['LangAbr'] = $Language['Abr'];
+            }
+        }
+        
         return $site;
     }
     
@@ -215,8 +223,8 @@ class FrontendController extends Controller
             'target' => $page['Target'],
         );
         
-        #array_debug($array);
-        #exit;
+        array_debug($array);
+        exit;
         
         /*
         switch($page['Target'])
