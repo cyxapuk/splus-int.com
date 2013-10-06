@@ -18,7 +18,9 @@
 <script src="{$_FILES_URL}js/script.js"></script>
 </head>
 
-[{$smarty.config['contact_ru']}]
+{assign var="contact_button" value="contact_ru"}
+
+[{$smarty.config[$contact_button]}]
 
 {if $site['LangId'] == 1}
     {assign var="terms" value="Все права защищены"}
