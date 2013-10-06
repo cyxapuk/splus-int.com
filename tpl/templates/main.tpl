@@ -21,6 +21,7 @@
 {assign var="contact_button" value="#contact+`$site['LangAbr']`#"}
 
 
+
 [{$contact_button}]
 
 {if $site['LangId'] == 1}
