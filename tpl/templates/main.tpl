@@ -1,5 +1,14 @@
 {config_load file='config.conf'}
 
+{assign var="button_contact" value="button_contact_`$site['LangAbr']`"}
+{assign var="button_more" value="button_more_`$site['LangAbr']`"}
+
+{if $site['LangAbr'] == 'ru'}
+    {config_load file='ru.conf'}
+{else}
+    {config_load file='all.conf'}
+{/if}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,31 +26,6 @@
 <script src="{$_FILES_URL}bootstrap/js/bootstrap.js"></script>
 <script src="{$_FILES_URL}js/script.js"></script>
 </head>
-
-{assign var="button_contact" value="button_contact_`$site['LangAbr']`"}
-{assign var="button_more" value="button_more_`$site['LangAbr']`"}
-
-{if $site['LangId'] == 1}
-    {assign var="terms" value="Все права защищены"}
-    {assign var="more_button" value="Узнать больше!"}
-    {assign var="contact_button" value="Обратная связь"}
-    {assign var="close_button" value="Закрыть"}
-    {assign var="form_name" value="Имя"}
-    {assign var="form_surname" value="Фамилия"}
-    {assign var="form_email" value="Email"}
-    {assign var="form_message" value="Сообщение"}
-    {assign var="form_send" value="Отправить сообщение!"}
-{else}
-    {assign var="terms" value="All rest reserved"}
-    {assign var="more_button" value="Learn more!"}
-    {assign var="contact_button" value="Contact with us"}
-    {assign var="close_button" value="Close"}
-    {assign var="form_name" value="Name"}
-    {assign var="form_surname" value="Surname"}
-    {assign var="form_email" value="Email"}
-    {assign var="form_message" value="Message"}
-    {assign var="form_send" value="Send message!"}
-{/if}
 
 <body>
 	<div class="container">
@@ -108,7 +92,7 @@
       		<div class="span12 br-topline">&nbsp;</div>
       </div>
       <div class="row">
-      	<div class="span12 footer"><h6>{$terms} 2013.</h6></div>
+      	<div class="span12 footer"><h6>{#rights#}</h6></div>
       </div>
                  
 	</div>
@@ -128,7 +112,7 @@
     {$array.objectlist[1].object[#bdescription#|md5].value_content[$array.site['LangId']]|html_entity_decode}
   </div>
   <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">{$close_button}</button>
+    <button class="btn" data-dismiss="modal" aria-hidden="true">{#button_close#}</button>
   </div>
 </div>    
 {/if}
@@ -147,7 +131,7 @@
     {$array.objectlist[2].object[#bdescription#|md5].value_content[$array.site['LangId']]|html_entity_decode}
   </div>
   <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">{$close_button}</button>
+    <button class="btn" data-dismiss="modal" aria-hidden="true">{#button_close#}</button>
   </div>
 </div>    
 {/if}
@@ -166,7 +150,7 @@
     {$array.objectlist[3].object[#bdescription#|md5].value_content[$array.site['LangId']]|html_entity_decode}
   </div>
   <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">{$close_button}</button>
+    <button class="btn" data-dismiss="modal" aria-hidden="true">{#button_close#}</button>
   </div>
 </div>    
 {/if}
@@ -185,7 +169,7 @@
     {$array.objectlist[4].object[#bdescription#|md5].value_content[$array.site['LangId']]|html_entity_decode}
   </div>
   <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">{$close_button}</button>
+    <button class="btn" data-dismiss="modal" aria-hidden="true">{#button_close#}</button>
   </div>
 </div>    
 {/if}
@@ -194,44 +178,44 @@
 <div class="modal hide fade" id="myModalContact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">{$contact_button}</h3>
+    <h3 id="myModalLabel">{$smarty.config[$button_contact]}</h3>
   </div>
   <div class="modal-body">
     <form class="form-horizontal" action="{$SITE_URL}" method="post">
       <div class="control-group">
-        <label class="control-label" for="inputName">{$form_name}</label>
+        <label class="control-label" for="inputName">{#form_name#}</label>
         <div class="controls">
-          <input type="text" name="name" id="inputName" placeholder="{$form_name}" required>
+          <input type="text" name="name" id="inputName" placeholder="{#form_name#}" required>
         </div>
       </div>
       <div class="control-group">
-        <label class="control-label" for="inputSurName">{$form_surname}</label>
+        <label class="control-label" for="inputSurName">{#form_surname#}</label>
         <div class="controls">
-          <input type="text" name="surName" id="inputSurName" placeholder="{$form_surname}" required>
+          <input type="text" name="surName" id="inputSurName" placeholder="{#form_surname#}" required>
         </div>
       </div>      
       <div class="control-group">
-        <label class="control-label" for="inputEmail">{$form_email}</label>
+        <label class="control-label" for="inputEmail">{#form_email#}</label>
         <div class="controls">
-          <input type="email" name="email" id="inputEmail" placeholder="{$form_email}" required>
+          <input type="email" name="email" id="inputEmail" placeholder="{#form_email#}" required>
         </div>
       </div>
       <div class="control-group">
-        <label class="control-label" for="inputEmail">{$form_message}</label>
+        <label class="control-label" for="inputEmail">{#form_message#}</label>
         <div class="controls">
           <textarea id="message" name="message" maxlength="1000" rows="4"></textarea>
         </div>
       </div>      
       <div class="control-group">
         <div class="controls">
-          <button type="submit" class="btn btn-primary">{$form_send}</button>
+          <button type="submit" class="btn btn-primary">{#form_send#}</button>
         </div>
       </div>
       <input type="hidden" name="send" value="1" />
     </form>
   </div>
   <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">{$close_button}</button>
+    <button class="btn" data-dismiss="modal" aria-hidden="true">{#button_close#}</button>
   </div>
 </div> 
     
