@@ -112,13 +112,15 @@ class FrontendCatalogController extends FrontendController
         
         $objectlist = $this->getListReplaceIndex($objectlist,'object_id');
         
+        $num = 0;
         foreach($objectlist as $key => $object)
         {
             $objectlist[$key]['object'] = unserialize($object['object']); 
             
             if(!empty($objectlist[$key]['object']))
             {
-                $objectlist[$key]['object'] = $this->getListReplaceIndex($objectlist[$key]['object'],'propertie_system_title');
+                $objectlist[$num]['object'] = $this->getListReplaceIndex($objectlist[$key]['object'],'propertie_system_title');
+                $num++;
             }        
         }
         
