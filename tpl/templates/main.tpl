@@ -213,8 +213,8 @@
       </div>
       <input type="hidden" name="send" value="1" />
     </form>
-    {if $array.objectlist_contact[1]}
-        <p class="center">{$array.objectlist_contact[1].object[#description#|md5].value_content[$array.site['LangId']]|html_entity_decode}</p>
+    {if $array.objectlist_contact[0]}
+        <p class="center">{$array.objectlist_contact[0].object[#description#|md5].value_content[$array.site['LangId']]|html_entity_decode}</p>
     {/if}    
   </div>
   <div class="modal-footer">
