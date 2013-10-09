@@ -47,16 +47,16 @@
 	  <div class="row">  
 	        <div class="span2"></div>          
       		<div class="span3 box">
-            {if $array.objectlist[1]}
-                <h5 class="center">{$array.objectlist[1].object[#description#|md5].value_content[$array.site['LangId']]|html_entity_decode}</h5>
-            <p class="more-link"><a class="btn btn-warning" data-toggle="modal" href="#myModal{$array.objectlist[1].object_id}">{$smarty.config[$button_more]}</a></p>
+            {if $array.objectlist[0]}
+                <h5 class="center">{$array.objectlist[0].object[#description#|md5].value_content[$array.site['LangId']]|html_entity_decode}</h5>
+            <p class="more-link"><a class="btn btn-warning" data-toggle="modal" href="#myModal{$array.objectlist[0].object_id}">{$smarty.config[$button_more]}</a></p>
             {/if}
             </div>
       		<div class="span2"></div>
       		<div class="span3 box">
-            {if $array.objectlist[2]}
-                <h5 class="center">{$array.objectlist[2].object[#description#|md5].value_content[$array.site['LangId']]|html_entity_decode}</h5>
-            <p class="more-link"><a class="btn btn-warning" data-toggle="modal" href="#myModal{$array.objectlist[2].object_id}">{$smarty.config[$button_more]}</a></p>
+            {if $array.objectlist[1]}
+                <h5 class="center">{$array.objectlist[1].object[#description#|md5].value_content[$array.site['LangId']]|html_entity_decode}</h5>
+            <p class="more-link"><a class="btn btn-warning" data-toggle="modal" href="#myModal{$array.objectlist[1].object_id}">{$smarty.config[$button_more]}</a></p>
             {/if}
             </div>
             <div class="span2"></div>                        
@@ -71,16 +71,16 @@
 	  <div class="row">  
 	        <div class="span2"></div>          
       		<div class="span3 box">
-            {if $array.objectlist[3]}
-                <h5 class="center">{$array.objectlist[3].object[#description#|md5].value_content[$array.site['LangId']]|html_entity_decode}</h5>
-            <p class="more-link"><a class="btn btn-warning" data-toggle="modal" href="#myModal{$array.objectlist[3].object_id}">{$smarty.config[$button_more]}</a></p>
+            {if $array.objectlist[2]}
+                <h5 class="center">{$array.objectlist[2].object[#description#|md5].value_content[$array.site['LangId']]|html_entity_decode}</h5>
+            <p class="more-link"><a class="btn btn-warning" data-toggle="modal" href="#myModal{$array.objectlist[2].object_id}">{$smarty.config[$button_more]}</a></p>
             {/if}
             </div>
       		<div class="span2"></div>
       		<div class="span3 box">
-            {if $array.objectlist[4]}
-                <h5 class="center">{$array.objectlist[4].object[#description#|md5].value_content[$array.site['LangId']]|html_entity_decode}</h5>
-            <p class="more-link"><a class="btn btn-warning" data-toggle="modal" href="#myModal{$array.objectlist[4].object_id}">{$smarty.config[$button_more]}</a></p>
+            {if $array.objectlist[3]}
+                <h5 class="center">{$array.objectlist[3].object[#description#|md5].value_content[$array.site['LangId']]|html_entity_decode}</h5>
+            <p class="more-link"><a class="btn btn-warning" data-toggle="modal" href="#myModal{$array.objectlist[3].object_id}">{$smarty.config[$button_more]}</a></p>
             {/if}
             </div>
             <div class="span2"></div>                        
@@ -98,6 +98,25 @@
 	</div>
     
     
+{if $array.objectlist[0]}    
+<!-- Modal -->
+<div class="modal hide fade" id="myModal{$array.objectlist[0].object_id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:800px; left:40%;">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">{$array.objectlist[0].object[#header#|md5].value_content[$array.site['LangId']]}</h3>
+  </div>
+  <div class="modal-body">
+    {if $array.objectlist[0].object[#image#|md5].value_content}
+    <p><img src="{$SITE_URL}catalog_files/object/image/{$array.objectlist[0].object[#image#|md5].value_content}" /></p>
+    {/if}
+    {$array.objectlist[0].object[#bdescription#|md5].value_content[$array.site['LangId']]|html_entity_decode}
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">{#button_close#}</button>
+  </div>
+</div>    
+{/if}
+
 {if $array.objectlist[1]}    
 <!-- Modal -->
 <div class="modal hide fade" id="myModal{$array.objectlist[1].object_id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:800px; left:40%;">
@@ -148,25 +167,6 @@
     <p><img src="{$SITE_URL}catalog_files/object/image/{$array.objectlist[3].object[#image#|md5].value_content}" /></p>
     {/if}
     {$array.objectlist[3].object[#bdescription#|md5].value_content[$array.site['LangId']]|html_entity_decode}
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">{#button_close#}</button>
-  </div>
-</div>    
-{/if}
-
-{if $array.objectlist[4]}    
-<!-- Modal -->
-<div class="modal hide fade" id="myModal{$array.objectlist[4].object_id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:800px; left:40%;">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">{$array.objectlist[4].object[#header#|md5].value_content[$array.site['LangId']]}</h3>
-  </div>
-  <div class="modal-body">
-    {if $array.objectlist[4].object[#image#|md5].value_content}
-    <p><img src="{$SITE_URL}catalog_files/object/image/{$array.objectlist[4].object[#image#|md5].value_content}" /></p>
-    {/if}
-    {$array.objectlist[4].object[#bdescription#|md5].value_content[$array.site['LangId']]|html_entity_decode}
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">{#button_close#}</button>
