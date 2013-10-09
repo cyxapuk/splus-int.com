@@ -213,6 +213,9 @@
       </div>
       <input type="hidden" name="send" value="1" />
     </form>
+    {if $array.objectlist_contact[1]}
+        <p class="center">{$array.objectlist_contact[1].object[#description#|md5].value_content[$array.site['LangId']]|html_entity_decode}</p>
+    {/if}    
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">{#button_close#}</button>
