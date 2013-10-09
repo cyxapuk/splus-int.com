@@ -42,9 +42,7 @@ class FrontendCatalogController extends FrontendController
     
     public function setCategoryId($category_id = 0)
     {
-        if(empty($category_id))  return $this->category_id;
-        
-        if(empty($this->category_id))
+        if(empty($category_id))  
         {
             $this->category_id = $category_id;
         }
