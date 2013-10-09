@@ -212,10 +212,8 @@ class FrontendController extends Controller
         $catalog->setCategoryId(1);  
         $objectlist = $catalog->getObjectList();
         
-        $catalog_contact = $this->initModule('catalog');
-        $catalog_contact->setCatalogId(1);        
-        $catalog_contact->setCategoryId(2);  
-        $objectlist_contact = $catalog_contact->getObjectList();        
+        $catalog->setCategoryId(2);  
+        $objectlist_contact = $catalog->getObjectList();        
         
         $array = array
         (
