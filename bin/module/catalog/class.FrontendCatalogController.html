@@ -110,7 +110,7 @@ class FrontendCatalogController extends FrontendController
         
         if(empty($objectlist))  return false;
         
-        $objectlist = $this->getListReplaceIndex($objectlist);
+        $objectlist = $this->getListReplaceIndex($objectlist,'object_id');
         
         foreach($objectlist as $key => $object)
         {
