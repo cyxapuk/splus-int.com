@@ -223,7 +223,41 @@
 </div> 
     
     
-    
+<script type="text/javascript">
+
+  if( document.referrer.indexOf('embed') != -1 ) {
+	function getQueryUrl(qs) {
+	    qs = qs.split("+").join(" ");
+
+	    var params = {}, tokens,
+	        re = /[?&]?([^=]+)=([^&]*)/g;
+
+	    while (tokens = re.exec(qs)) {
+	        params[decodeURIComponent(tokens[1])]
+	            = decodeURIComponent(tokens[2]);
+	    }
+
+	    return params;
+	}
+
+	var query = getQueryUrl(document.referrer.split('?')[1]);
+
+	if( query.utm_campaign.indexOf('_click') == -1 ) {
+        	history.pushState(null, "", "?utm_campaign="+query.utm_campaign+"_click"+"&utm_medium="+query.utm_medium+"&utm_source="+query.utm_source+"_click");
+        }
+  }
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-45129138-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+</script>    
     
     
 </body>
