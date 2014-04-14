@@ -181,7 +181,7 @@
     <h3 id="myModalLabel">{$smarty.config[$button_contact]}</h3>
   </div>
   <div class="modal-body">
-    <form class="form-horizontal" action="{$SITE_URL}" method="post">
+    <form class="form-horizontal" action="{$SITE_URL}" method="post" id="contact_form">
       <div class="control-group">
         <label class="control-label" for="inputName">{#form_name#}</label>
         <div class="controls">
