@@ -257,7 +257,15 @@ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www')
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
 
-</script>    
+</script>
+
+<script>
+$(document).ready(function () {
+	$("#contact_form").submit(function(e){
+		alert('{#form_send_ok#}');
+	});
+});
+</script>
     
     
 </body>
